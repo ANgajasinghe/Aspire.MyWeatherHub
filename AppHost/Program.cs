@@ -1,6 +1,11 @@
 var builder = DistributedApplication.CreateBuilder(args);
 
-var api = builder.AddProject<Projects.Api>("api");
+var redis = builder.AddRedis("cash")
+    .WithRedisCommander();
+
+var api = builder.AddProject<Projects.Api>("api")
+    .WithReference(redis);
+
 var app = builder.AddProject<Projects.MyWeatherHub>("myweatherhub")
     .WithReference(api)
     .WithExternalHttpEndpoints();

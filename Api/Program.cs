@@ -6,6 +6,7 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddNwsManager();
 
+builder.AddRedisOutputCache("cash");
 builder.AddServiceDefaults();
 
 var app = builder.Build();

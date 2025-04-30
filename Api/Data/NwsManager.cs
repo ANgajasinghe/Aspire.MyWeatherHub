@@ -81,11 +81,12 @@ namespace Microsoft.Extensions.DependencyInjection
 
             services.AddMemoryCache();
 
-            // Add default output caching
-            services.AddOutputCache(options =>
-            {
-                options.AddBasePolicy(builder => builder.Cache());
-            });
+            // We dont need to add the default output cache here, as we are using the Redis output cache in the AppHost project.
+            // Add default output caching 
+            // services.AddOutputCache(options =>
+            // {
+            //     options.AddBasePolicy(builder => builder.Cache());
+            // });
 
             return services;
         }
